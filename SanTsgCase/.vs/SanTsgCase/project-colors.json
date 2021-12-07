@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "f37febe7-2ae7-400e-a7dd-6b8b77e9dcad": {
+      "ProjectGuid": "f37febe7-2ae7-400e-a7dd-6b8b77e9dcad",
+      "DisplayName": "SanTsgCase",
+      "ColorIndex": 0
+    },
+    "61539006-26e2-4c73-8386-c59b411b01e4": {
+      "ProjectGuid": "61539006-26e2-4c73-8386-c59b411b01e4",
+      "DisplayName": "EntityLayer",
+      "ColorIndex": 1
+    },
+    "38266022-ca60-4f38-9cfc-62ade54ef9ee": {
+      "ProjectGuid": "38266022-ca60-4f38-9cfc-62ade54ef9ee",
+      "DisplayName": "DataAccessLayer",
+      "ColorIndex": 2
+    },
+    "424a7465-994f-4a35-b5fe-008ead1b6c42": {
+      "ProjectGuid": "424a7465-994f-4a35-b5fe-008ead1b6c42",
+      "DisplayName": "BusinessLayer",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

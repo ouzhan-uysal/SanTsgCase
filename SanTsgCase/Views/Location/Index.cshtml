@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Locations</h1>
+
+@await Component.InvokeAsync("LocationList")
+
+<form method="post">
+    <label for="location">New Location</label>
+    <input tpye="text" id="location" name="Name"/>
+    <button type="submit">Add New Location</button>
+</form>

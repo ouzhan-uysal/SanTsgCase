@@ -1,0 +1,17 @@
+﻿@using EntityLayer.Concrete
+@model List<Location>
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<table class="table table-bordered">
+    <tr>
+        <th>Code</th>
+        <th>Location</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.Code</td>
+            <td>@item.Name</td>
+        </tr>
+    }
+</table>

@@ -47,7 +47,20 @@ namespace DataAccessLayer.Repositories
     {
         public void Insert(T1 entity1, T2 entity2)
         {
-            throw new NotImplementedException();
+            if (entity1 != null)
+            {
+                using var c = new Context();
+                c.Update(entity1);
+                c.SaveChanges();
+            } else if (entity2 != null)
+            {
+                using var c = new Context();
+                c.Update(entity2);
+                c.SaveChanges();
+            } else
+            {
+
+            }
         }
     }
 }

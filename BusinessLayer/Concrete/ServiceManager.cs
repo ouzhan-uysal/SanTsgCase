@@ -11,21 +11,26 @@ namespace BusinessLayer.Concrete
 {
     public class ServiceManager : IServiceService
     {
-        IServiceDAL _serviceDAL;
+        ILocationDAL _locationDAL;
+        IHotelDAL _hotelDAL;
+        IFlightDAL _flightDAL;
 
-        public ServiceManager(IServiceDAL serviceDAL)
+        public ServiceManager(ILocationDAL locationDAL) => _locationDAL = locationDAL;
+        public ServiceManager(IHotelDAL hotelDAL) => _hotelDAL = hotelDAL;
+        public ServiceManager(IFlightDAL flightDAL) => _flightDAL = flightDAL;
+
+        public void addFlightService(Flight flight) => _flightDAL.Insert(flight);
+
+        public void addHotelService(Hotel hotel) => _hotelDAL.Insert(hotel);
+
+        public Location GetLocationByID(int id)
         {
-            _serviceDAL = serviceDAL;
+            return _locationDAL.GetById(id);
         }
 
-        public void addFlightService(Flight flight)
+        public List<Location> GetList()
         {
-            throw new NotImplementedException();
-        }
-
-        public void addHotelService(Hotel hotel)
-        {
-            throw new NotImplementedException();
+            return _locationDAL.GetListAll();
         }
     }
 }

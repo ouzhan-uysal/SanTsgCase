@@ -9,13 +9,15 @@ namespace SanTsgCase.Controllers
 {
     public class ServiceController : Controller
     {
-        LocationManager lm = new LocationManager(new EFLocationRepository());   // for list locations
-        ServiceManager sm = new ServiceManager(new EFServiceRepository());
+        //LocationManager lm = new LocationManager(new EFLocationRepository());   // for list locations
+        ServiceManager lr = new ServiceManager(new EFLocationRepository());
+        ServiceManager hr = new ServiceManager(new EFHotelRepository());
+        ServiceManager fr = new ServiceManager(new EFFlightRepository());
 
         [HttpGet]
         public IActionResult Index()
         {
-            var values = lm.GetList();
+            var values = lr.GetList();
             return View(values);
         }
         [HttpPost]
@@ -28,18 +30,22 @@ namespace SanTsgCase.Controllers
             ValidationResult flightResult = fv.Validate(fp);
             if (hotelResult.IsValid)
             {
-                sm.addHotelService(hp);
+                hr.addHotelService(hp);
                 return RedirectToAction("Index", "Service");
 
             } else if (flightResult.IsValid)
             {
-                sm.addFlightService(fp);
+                fr.addFlightService(fp);
                 return RedirectToAction("Index", "Service");
 
             } else
             {
                 return View();
             }
+        }
+        public IActionResult CreateService(int id)
+        {
+            return View();
         }
     }
 }

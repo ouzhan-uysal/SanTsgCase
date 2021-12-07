@@ -11,5 +11,7 @@ namespace BusinessLayer.Abstract
     {
         void addHotelService(Hotel hotel);
         void addFlightService(Flight flight);
+        List<Location> GetList();
+        Location GetLocationByID(int id);
     }
 }

@@ -9,12 +9,14 @@ namespace SanTsgCase.Controllers
 {
     public class ServiceController : Controller
     {
+        LocationManager lm = new LocationManager(new EFLocationRepository());   // for list locations
         ServiceManager sm = new ServiceManager(new EFServiceRepository());
 
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var values = lm.GetList();
+            return View(values);
         }
         [HttpPost]
         public IActionResult Index(Hotel hp, Flight fp)
@@ -36,9 +38,8 @@ namespace SanTsgCase.Controllers
 
             } else
             {
-
+                return View();
             }
-            return View();
         }
     }
 }

@@ -12,11 +12,11 @@
     @Html.ValidationMessageFor(x=>x.Username)
     @*<input type="text" id="username" name="Username"/>*@
     <label for="password">Şifre:</label>
-    @Html.TextBoxFor(x=>x.Password)
+    @Html.PasswordFor(x=>x.Password)
     @Html.ValidationMessageFor(x=>x.Password)
     @*<input type="password" id="password" name="Password"/>*@
     <label for="password">Şifre (Tekrar):</label>
-    @Html.TextBoxFor(x=>x.Repassword)
+    @Html.PasswordFor(x=>x.Repassword)
     @Html.ValidationMessageFor(x=>x.Repassword)
     @*<input type="password" id="repassword" name="Repassword"/>*@
     <button type="submit">Kayıt Ol</button>

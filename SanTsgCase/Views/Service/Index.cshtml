@@ -1,8 +1,95 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<Location>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Service Creation</h1>
 
+<form method="post">
+    <span>Select Service Type: </span>
+    <input type="radio" id="hotelType" name="serviceType" value="Hotel"/>
+    <label for="hotelType">Hotel</label>
+    <input type="radio" id="flightType" name="serviceType" value="Flight"/>
+    <label for="flightType">Flight</label>
+    <br />
+    <br />
+    <div id="serviceForm"></div>
+</form>
+
+<script>
+    document.getElementById("hotelType").onclick = function () {
+        document.getElementById("flightType").checked = false;
+        document.getElementById("serviceForm").innerHTML = `
+            <label for="serviceName">Service Name: </label>
+            <input type="text" id="serviceName" name="Name"/>
+            <br />
+            <br />
+
+            <label for="locationCode">Location: </label>
+            <select id="locationCode" name="LocationCode">
+                @foreach(var item in Model)
+                {
+                    <option value="@item.Name">@item.Name</option>
+                }
+            </select>
+            <br />
+            <br />
+
+            <label for="capacity">Capacity: </label>
+            <input type="number" id="capacity" name="Capacity"/>
+            <br />
+            <br />
+            
+            <label for="peradult">Price Per Adult: </label>
+            <input type="number" id="peradult" name="PricePerAdult" />
+            <label for="perchild">Price Per Child: </label>
+            <input type="number" id="perchild" name="PricePerChild" />
+            
+            <button type="submit">Add Hotel Service</button>
+        `;
+    }
+    document.getElementById("flightType").onclick = function () {
+        document.getElementById("hotelType").checked = false;
+        document.getElementById("serviceForm").innerHTML = `
+            <label for="serviceName">Service Name: </label>
+            <input type="text" id="serviceName" name="Code"/>
+            <br />
+            <br />
+            
+            <label for="locationCode">Location: </label>
+            <select id="locationCode" name="LocationCode">
+            @if (Model != null)
+            {
+                @foreach(var item in Model)
+                {
+                    <option value="@item.Name">@item.Name</option>
+                }   
+            }
+            </select>
+            <br />
+            <br />
+
+            <label for="gidis">Departure</label>
+            <input type="date" id="gidis" name="Departure"/>
+            <label for="donus">Arrival</label>
+            <input type="date" id="donus" name="Arrival"/>
+            <br />
+            <br />
+            
+            <label for="capacity">Capacity: </label>
+            <input type="number" id="capacity" name="Capacity"/>
+            <br />
+            <br />
+            
+            <label for="peradult">Price Per Adult: </label>
+            <input type="number" id="peradult" name="PricePerAdult" />
+            <label for="perchild">Price Per Child: </label>
+            <input type="number" id="perchild" name="PricePerChild" />
+
+            <button type="submit">Add Flight Service</button>
+        `;
+    }
+</script>

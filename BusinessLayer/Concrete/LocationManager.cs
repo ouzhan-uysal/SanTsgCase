@@ -24,11 +24,6 @@ namespace BusinessLayer.Concrete
             _locationDAL.Insert(location);
         }
 
-        public void DeleteLocation(Location location)
-        {
-            _locationDAL.Delete(location);
-        }
-
         public List<Location> GetList()
         {
             return _locationDAL.GetListAll();
@@ -37,11 +32,6 @@ namespace BusinessLayer.Concrete
         public Location GetLocationByID(int id)
         {
             return _locationDAL.GetById(id);
-        }
-
-        public void UpdateLocation(Location location)
-        {
-            _locationDAL.Update(location);
         }
     }
 }

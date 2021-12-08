@@ -19,16 +19,26 @@ namespace BusinessLayer.Concrete
         public ServiceManager(IHotelDAL hotelDAL) => _hotelDAL = hotelDAL;
         public ServiceManager(IFlightDAL flightDAL) => _flightDAL = flightDAL;
 
-        public void addFlightService(Flight flight) => _flightDAL.Insert(flight);
+        public void AddFlight(Flight flight) => _flightDAL.Insert(flight);
 
-        public void addHotelService(Hotel hotel) => _hotelDAL.Insert(hotel);
+        public void AddHotel(Hotel hotel) => _hotelDAL.Insert(hotel);
 
         public Location GetLocationByID(int id)
         {
             return _locationDAL.GetById(id);
         }
 
-        public List<Location> GetList()
+        public List<Hotel> GetHotelList()
+        {
+            return _hotelDAL.GetListAll();
+        }
+
+        public List<Flight> GetFlightList()
+        {
+            return _flightDAL.GetListAll();
+        }
+
+        public List<Location> GetLocationList()
         {
             return _locationDAL.GetListAll();
         }

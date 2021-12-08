@@ -25,8 +25,7 @@ namespace SanTsgCase.Controllers
             {
                 um.AddUser(p);
                 return RedirectToAction("Index", "User");
-            }
-            else
+            } else
             {
                 foreach (var item in results.Errors)
                 {

@@ -3,6 +3,7 @@ using DataAccessLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,31 +37,17 @@ namespace DataAccessLayer.Repositories
             c.SaveChanges();
         }
 
+        public List<T> List(Expression<Func<T, bool>> filter)
+        {
+            using var c = new Context();
+            return c.Set<T>().Where(filter).ToList();
+        }
+
         public void Update(T entity)
         {
             using var c = new Context();
             c.Update(entity);
             c.SaveChanges();
-        }
-    }
-    public class GenericRepository<T1, T2> : IGenericDAL<T1, T2> where T1 : class where T2 : class
-    {
-        public void Insert(T1 entity1, T2 entity2)
-        {
-            if (entity1 != null)
-            {
-                using var c = new Context();
-                c.Update(entity1);
-                c.SaveChanges();
-            } else if (entity2 != null)
-            {
-                using var c = new Context();
-                c.Update(entity2);
-                c.SaveChanges();
-            } else
-            {
-
-            }
         }
     }
 }

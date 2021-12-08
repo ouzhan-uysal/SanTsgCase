@@ -9,9 +9,11 @@ namespace BusinessLayer.Abstract
 {
     public interface IServiceService
     {
-        void addHotelService(Hotel hotel);
-        void addFlightService(Flight flight);
-        List<Location> GetList();
+        void AddHotel(Hotel hotel);
+        void AddFlight(Flight flight);
+        List<Hotel> GetHotelList();
+        List<Flight> GetFlightList();
+        List<Location> GetLocationList();
         Location GetLocationByID(int id);
     }
 }

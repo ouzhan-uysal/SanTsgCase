@@ -12,7 +12,7 @@ namespace BusinessLayer.ValidationRules
     {
         public LocationValidator()
         {
-            RuleFor(x => x.Name).NotEmpty().WithMessage("Location boş bırakılamaz.");
+            RuleFor(x => x.Name).NotEmpty().WithMessage("Location boş bırakılamaz.").NotNull().WithMessage("Location boş bırakılamaz.");
         }
     }
 }

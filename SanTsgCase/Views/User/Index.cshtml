@@ -7,17 +7,23 @@
 <h1>User Register</h1>
 
 @using (Html.BeginForm("Index", "User", FormMethod.Post)) {
-    <label for="username">Kullanıcı Adı:</label>
+    @Html.Label("Username: ")
     @Html.TextBoxFor(x=>x.Username)
     @Html.ValidationMessageFor(x=>x.Username)
+    <br />
+    <br />
     @*<input type="text" id="username" name="Username"/>*@
-    <label for="password">Şifre:</label>
+    @Html.Label("Password: ")
     @Html.PasswordFor(x=>x.Password)
     @Html.ValidationMessageFor(x=>x.Password)
+    <br />
+    <br />
     @*<input type="password" id="password" name="Password"/>*@
-    <label for="password">Şifre (Tekrar):</label>
+    @Html.Label("Password (Again): ")
     @Html.PasswordFor(x=>x.Repassword)
     @Html.ValidationMessageFor(x=>x.Repassword)
+    <br />
+    <br />
     @*<input type="password" id="repassword" name="Repassword"/>*@
     <button type="submit">Kayıt Ol</button>
 }

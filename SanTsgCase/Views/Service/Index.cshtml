@@ -1,5 +1,4 @@
-﻿@using EntityLayer.Concrete
-@model List<Location>
+﻿@model EntityLayer.Concrete.Hotel
 
 @{
     ViewData["Title"] = "Index";
@@ -8,7 +7,7 @@
 
 <h1>Service Creation</h1>
 
-<form method="post">
+<div>
     <span>Select Service Type: </span>
     <input type="radio" id="hotelType" name="serviceType" value="Hotel"/>
     <label for="hotelType">Hotel</label>
@@ -16,37 +15,37 @@
     <label for="flightType">Flight</label>
     <br />
     <br />
-    <div id="serviceForm"></div>
-</form>
+    
+    <form method="post" id="serviceForm" asp-controller="Service" asp-action="IndexHotel"></form>  <!--Buradaki asp-action kısmını gelen veriye göre nasıl değiştirebilirim?-->
+</div>
 
 <script>
     document.getElementById("hotelType").onclick = function () {
         document.getElementById("flightType").checked = false;
         document.getElementById("serviceForm").innerHTML = `
-            <label for="serviceName">Service Name: </label>
-            <input type="text" id="serviceName" name="Name"/>
+            @Html.Label("Service Name: ")
+            @Html.TextBoxFor(x => x.Name)
+            @Html.ValidationMessageFor(x=>x.Name)
             <br />
             <br />
 
-            <label for="locationCode">Location: </label>
-            <select id="locationCode" name="LocationCode">
-                @foreach(var item in Model)
-                {
-                    <option value="@item.Code">@item.Name</option>
-                }
-            </select>
-            <br />
-            <br />
-
-            <label for="capacity">Capacity: </label>
-            <input type="number" id="capacity" name="Capacity"/>
+            @Html.Label("Location: ")
+            @Html.DropDownListFor(x => x.Location, (List<SelectListItem>)ViewBag.ll)
             <br />
             <br />
             
-            <label for="peradult">Price Per Adult: </label>
-            <input type="number" id="peradult" name="PricePerAdult" />
-            <label for="perchild">Price Per Child: </label>
-            <input type="number" id="perchild" name="PricePerChild" />
+            @Html.Label("Capacity: ")
+            @Html.TextBoxFor(x => x.Capacity)
+            @Html.ValidationMessageFor(x=>x.Capacity)
+            <br />
+            <br />
+            
+            @Html.Label("Price Per Adult: ")
+            @Html.TextBoxFor(x => x.PricePerAdult)
+            @Html.ValidationMessageFor(x=>x.PricePerAdult)
+            @Html.Label("Price Per Child: ")
+            @Html.TextBoxFor(x => x.PricePerChild)
+            @Html.ValidationMessageFor(x=>x.PricePerChild)
             
             <button type="submit">Add Hotel Service</button>
         `;
@@ -54,21 +53,14 @@
     document.getElementById("flightType").onclick = function () {
         document.getElementById("hotelType").checked = false;
         document.getElementById("serviceForm").innerHTML = `
+            <h2>Flight için gerekli kayıt işlemleri çalışmıyor.</h2>
             <label for="serviceName">Service Name: </label>
             <input type="text" id="serviceName" name="Code"/>
             <br />
             <br />
             
-            <label for="locationCode">Location: </label>
-            <select id="locationCode" name="LocationCode">
-            @if (Model != null)
-            {
-                @foreach(var item in Model)
-                {
-                    <option value="@item.Name">@item.Name</option>
-                }   
-            }
-            </select>
+            @Html.Label("Location: ")
+            @Html.DropDownListFor(x => x.Location, (List<SelectListItem>)ViewBag.ll)
             <br />
             <br />
 

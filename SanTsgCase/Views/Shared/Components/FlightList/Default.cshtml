@@ -1,0 +1,29 @@
+﻿@using EntityLayer.Concrete
+@model List<Flight>
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Code</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th>Capacity</th>
+        <th>PricePerAdult</th>
+        <th>PricePerChild</th>
+        <th>Location</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Code</td>
+            <td>@item.Departure</td>
+            <td>@item.Arrival</td>
+            <td>@item.Capacity</td>
+            <td>@item.PricePerAdult</td>
+            <td>@item.PricePerChild</td>
+            <td>@item.Location</td>
+        </tr>
+    }
+</table>

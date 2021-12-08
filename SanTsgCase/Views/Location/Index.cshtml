@@ -1,4 +1,8 @@
-﻿@{
+﻿@*
+@model EntityLayer.Concrete.Location;
+*@
+
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -12,3 +16,14 @@
     <input tpye="text" id="location" name="Name"/>
     <button type="submit">Add New Location</button>
 </form>
+
+@*
+@using (Html.BeginForm("Index", "Location", FormMethod.Post)) {
+    @Html.Label("New Location: ")
+    @Html.TextBoxFor(x=>x.Name)
+    @Html.ValidationMessageFor(x=>x.Name)
+    <br />
+    <br />
+    <button type="submit">Add New Location</button>
+}
+*@

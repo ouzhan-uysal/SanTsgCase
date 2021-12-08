@@ -12,7 +12,7 @@ namespace EntityLayer.Concrete
         [Key]
         public int Code { get; set; }
         [StringLength(20)]
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         //public List<Flight> Flights { get; set; }   // 1 - N
         //public List<Hotel> Hotels { get; set; } // 1-n
